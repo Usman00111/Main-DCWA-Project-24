@@ -1,5 +1,7 @@
+//this imports promise-mysql 
 const mysql = require('promise-mysql');
 
+//this creates a pool of database connections and if successful it assigns the pool to th pool variable if not eror message is shown 
 let pool;
 mysql.createPool({
     connectionLimit: 3,
@@ -13,7 +15,7 @@ mysql.createPool({
     console.log("DB Connection Error: " + e);
 });
 
-//func to get all students
+//func to get/fetch all students
 const getStudents = () => {
     return pool.query('SELECT * FROM student ORDER BY sid');
 };
