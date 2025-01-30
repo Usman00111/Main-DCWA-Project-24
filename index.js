@@ -1,8 +1,11 @@
 //imports mysql and mongodb
 const express = require('express');
 const app = express();
-const mysqlDao = require('./models/mysqlDao');
-const mongoDao = require('./models/mongoDao');
+
+// Import student and grades routes and lecturer
+const studentRoutes = require('./routes/studentRoutes');
+const gradesRoutes = require('./routes/gradesRoutes'); 
+const lecturerRoutes = require('./routes/lecturerRoutes');
 
 //embeded javascript used to create web pages and basically tells the express that all view files have a .ejs extention. (in view folder )
 app.set('view engine', 'ejs');
