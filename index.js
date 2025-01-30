@@ -17,20 +17,6 @@ app.get('/', (req, res) => {
     res.render('home');
 });
 
-//fetch students from mysql 
-app.get('/students', (req, res) => {
-    mysqlDao.getStudents()
-        .then((students) => res.render('students', {students}))
-        .catch((err) => res.send(err));
-});
-
-// Fetch lecturers from MongoDB
-app.get('/lecturers', (req, res) => {
-    mongoDao.getLecturers()
-        .then((lecturers) => res.render('lecturers', { lecturers}))
-        .catch((err) => res.send(err));
-});
-
 // Use student and grades routes and lecturer
 app.use(studentRoutes);
 app.use(gradesRoutes); 
