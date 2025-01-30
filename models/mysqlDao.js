@@ -13,8 +13,15 @@ mysql.createPool({
     console.log("DB Connection Error: " + e);
 });
 
+//func to get all students
 const getStudents = () => {
     return pool.query('SELECT * FROM student ORDER BY sid');
 };
 
-module.exports = {getStudents };
+//func to add a student 
+const addStudent = (sid, name, age) => {
+    return pool.query('INSERT INTO student (sid, name, age) VALUES (?, ?, ?)', [sid, name, age]);
+};
+
+
+module.exports = {getStudents, addStudent };
