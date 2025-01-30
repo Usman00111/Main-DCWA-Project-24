@@ -28,5 +28,10 @@ app.get('/lecturers', (req, res) => {
         .catch((err) => res.send(err));
 });
 
+// Use student and grades routes and lecturer
+app.use(studentRoutes);
+app.use(gradesRoutes); 
+app.use(lecturerRoutes); 
+
 //starts the the server on port 3004 witht he message 
 app.listen(3004, () => console.log("Server running on port 3004"));
