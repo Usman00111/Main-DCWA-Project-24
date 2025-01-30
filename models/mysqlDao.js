@@ -23,5 +23,16 @@ const addStudent = (sid, name, age) => {
     return pool.query('INSERT INTO student (sid, name, age) VALUES (?, ?, ?)', [sid, name, age]);
 };
 
+//func to get grades 
+const getGrades = () => {
+    return pool.query(`
+        SELECT student.name AS student_name, module.name AS module_name, grade.grade 
+        FROM grade
+        JOIN student ON grade.sid = student.sid
+        JOIN module ON grade.mid = module.mid
+        ORDER BY student.name, grade.grade ASC
+    `);
+};
 
-module.exports = {getStudents, addStudent };
+
+module.exports = {getStudents, addStudent, getGrades };
